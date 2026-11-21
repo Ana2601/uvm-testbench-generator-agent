@@ -1,0 +1,56 @@
+{
+  "design": "sync_fifo",
+  "runs": [
+    {
+      "run": 1,
+      "note": "First plan: circular-buffer model, random traffic, boundary coverage.",
+      "status": "FAIL",
+      "checks": 3000,
+      "errors": 1657,
+      "coverage_pct": 100.0,
+      "mutation_pct": null,
+      "seconds": 0.1
+    },
+    {
+      "run": 2,
+      "note": "Model fix: push/pop decided on the state before the edge (spec: no bypass when full).",
+      "status": "PASS",
+      "checks": 3000,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "mutation_pct": 100.0,
+      "seconds": 0.5
+    }
+  ],
+  "bugs": [],
+  "summary": "Reference model of a FWFT FIFO (spec-level: circular buffer, count, no-bypass rule), random back-pressure on both sides, 7 boundary coverage points (including simultaneous read/write at 1, 7 and full). The first plan's model was wrong (it allowed a bypass write); the spec decided it, and the DUT was right.",
+  "final": {
+    "run": 2,
+    "status": "PASS",
+    "checks": 3000,
+    "coverage_pct": 100.0,
+    "holes": [],
+    "mutation": {
+      "mutants": 18,
+      "killed": 18,
+      "survived": 0,
+      "equivalent": 0,
+      "stillborn": 0,
+      "score_pct": 100.0,
+      "survivors": []
+    },
+    "uvm": {
+      "status": "PASS",
+      "checks": 3004,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "uvm_report": {
+        "UVM_INFO": 3,
+        "UVM_WARNING": 2,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "log": null
+    }
+  }
+}

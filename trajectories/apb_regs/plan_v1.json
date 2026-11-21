@@ -1,0 +1,85 @@
+{
+  "dut": "apb_regs",
+  "params": {},
+  "clock": "pclk",
+  "period_ns": 10,
+  "reset": {
+    "port": "presetn",
+    "active": 0,
+    "cycles": 3
+  },
+  "defaults": {
+    "psel": "1'b0",
+    "penable": "1'b0",
+    "pwrite": "1'b0",
+    "paddr": "4'h0",
+    "pwdata": "32'h0"
+  },
+  "model": {
+    "decls": "logic [7:0]  m_ctrl;\nlogic [31:0] m_data;\nlogic [15:0] m_wcnt;\nlogic [1:0]  m_stat;\nbit m_access, m_mapped;\nbit m_dirty_at_reset;",
+    "reset": "m_dirty_at_reset = (m_ctrl != 8'h00) || (m_data != 32'h0) || (m_wcnt != 16'h0) || (m_stat != 2'b00);\nm_ctrl = 8'h00;\nm_data = 32'h0;\nm_wcnt = 16'h0;\nm_stat = 2'b00;",
+    "outputs": "m_access = psel && penable;\nm_mapped = (paddr == 4'h0) || (paddr == 4'h4) || (paddr == 4'h8) || (paddr == 4'hC);\nexp_pready  = 1'b1;\nexp_pslverr = m_access && (!m_mapped || (pwrite && paddr == 4'h8));\ncase (paddr)\n    4'h0:    exp_prdata = {24'h0, m_ctrl};\n    4'h4:    exp_prdata = m_data;\n    4'h8:    exp_prdata = {16'h0, m_wcnt};\n    4'hC:    exp_prdata = {30'h0, m_stat};\n    default: exp_prdata = 32'h0;\nendcase\n// prdata is only defined in the access phase of a successful read\nchk_prdata = m_access && !pwrite && !exp_pslverr;",
+    "step": "if (m_access && pwrite && !exp_pslverr) begin\n    case (paddr)\n        4'h0: begin m_ctrl = pwdata[7:0]; m_stat[1] = 1'b1; end\n        4'h4: begin m_data = pwdata; m_wcnt = m_wcnt + 16'h1; m_stat[0] = 1'b1; end\n        4'hC: m_stat = m_stat & ~pwdata[1:0];\n        default: ;\n    endcase\nend"
+  },
+  "seq_vars": "logic [3:0] s_addr;\nbit s_wr;\nlogic [31:0] s_data;",
+  "sequences": [
+    {
+      "name": "random_mapped_transfers",
+      "cycles": 4000,
+      "pre": "if (i % 2 == 0) begin\n    s_addr = 4'($urandom_range(0, 3) * 4);\n    s_wr   = 1'($urandom_range(0, 1));\n    s_data = $urandom;\nend",
+      "drive": {
+        "psel": "1'b1",
+        "penable": "1'(i % 2)",
+        "pwrite": "s_wr",
+        "paddr": "s_addr",
+        "pwdata": "s_data"
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "name": "write_ctrl",
+      "expr": "psel && penable && pwrite && paddr == 4'h0"
+    },
+    {
+      "name": "write_data",
+      "expr": "psel && penable && pwrite && paddr == 4'h4"
+    },
+    {
+      "name": "write_stat_clear",
+      "expr": "psel && penable && pwrite && paddr == 4'hC && (pwdata[1:0] & m_stat) != 2'b00"
+    },
+    {
+      "name": "read_ctrl",
+      "expr": "psel && penable && !pwrite && paddr == 4'h0"
+    },
+    {
+      "name": "read_data",
+      "expr": "psel && penable && !pwrite && paddr == 4'h4"
+    },
+    {
+      "name": "read_wcnt",
+      "expr": "psel && penable && !pwrite && paddr == 4'h8 && m_wcnt != 16'h0"
+    },
+    {
+      "name": "read_stat_set",
+      "expr": "psel && penable && !pwrite && paddr == 4'hC && m_stat == 2'b11"
+    },
+    {
+      "name": "error_write_wcnt",
+      "expr": "pslverr && pwrite && paddr == 4'h8"
+    },
+    {
+      "name": "error_unmapped",
+      "expr": "pslverr && paddr != 4'h0 && paddr != 4'h4 && paddr != 4'h8 && paddr != 4'hC"
+    },
+    {
+      "name": "idle_cycle",
+      "expr": "!psel"
+    },
+    {
+      "name": "reset_after_writes",
+      "expr": "!presetn && m_dirty_at_reset"
+    }
+  ]
+}

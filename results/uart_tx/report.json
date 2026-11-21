@@ -1,0 +1,56 @@
+{
+  "design": "uart_tx",
+  "runs": [
+    {
+      "run": 1,
+      "note": "Cycle-counting frame model; random requests.",
+      "status": "PASS",
+      "checks": 4000,
+      "errors": 0,
+      "coverage_pct": 37.5,
+      "mutation_pct": 95.0,
+      "seconds": 3.2
+    },
+    {
+      "run": 2,
+      "note": "Directed: 4 data patterns back-to-back with tx_valid held high; mid-frame resets.",
+      "status": "PASS",
+      "checks": 4628,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "mutation_pct": 100.0,
+      "seconds": 2.3
+    }
+  ],
+  "bugs": [],
+  "summary": "Frame-level reference model checks txd and tx_ready every cycle, including during reset. Random plus directed stimulus: patterns 0x00/0xFF/0x55/0xAA, back-to-back frames, requests while busy, and resets mid-frame. The mid-frame reset sequence was needed to catch a wrong txd reset value.",
+  "final": {
+    "run": 2,
+    "status": "PASS",
+    "checks": 4628,
+    "coverage_pct": 100.0,
+    "holes": [],
+    "mutation": {
+      "mutants": 23,
+      "killed": 20,
+      "survived": 0,
+      "equivalent": 3,
+      "stillborn": 0,
+      "score_pct": 100.0,
+      "survivors": []
+    },
+    "uvm": {
+      "status": "PASS",
+      "checks": 4632,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "uvm_report": {
+        "UVM_INFO": 3,
+        "UVM_WARNING": 2,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "log": null
+    }
+  }
+}

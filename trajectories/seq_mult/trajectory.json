@@ -1,0 +1,41 @@
+{
+  "model": "claude (interactive, during development)",
+  "note": "Model outputs (plans, bug reports) only. Every simulation, coverage figure and mutation score is recomputed on replay.",
+  "steps": [
+    {
+      "text": "Shift-add multiplier, W = 16 cycles per product. Model: busy for exactly W cycles after an accepted start, then done = 1 for one cycle with p = a*b of the latched operands; p holds otherwise. Random starts first.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v1.json",
+            "note": "Latency-exact handshake model; random starts and operands."
+          }
+        }
+      ]
+    },
+    {
+      "text": "PASS, coverage 37.5 %: random 16-bit operands never hit 0, 0xFFFF*0xFFFF or powers of two, and reset never arrived while busy. One mutant survives: done's reset value, only observable when checking during a reset. Adding corner operands with start held high (also back-to-back) and resets while busy.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v2.json",
+            "note": "Corner operands (0, 1, max, powers of two) with start held high; resets while busy."
+          }
+        }
+      ]
+    },
+    {
+      "text": "100 % coverage, 19/19 killable mutants killed (4 proven equivalent). Done.",
+      "tool_calls": [
+        {
+          "name": "finish",
+          "input": {
+            "summary": "Exact-latency model of the start/busy/done protocol and the product; corner operands, back-to-back starts, start while busy and reset while busy are all covered and checked."
+          }
+        }
+      ]
+    }
+  ]
+}

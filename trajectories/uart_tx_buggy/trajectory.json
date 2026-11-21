@@ -1,0 +1,42 @@
+{
+  "model": "claude (interactive, during development)",
+  "note": "Model outputs (plans, bug reports) only. Every simulation, coverage figure and mutation score is recomputed on replay.",
+  "steps": [
+    {
+      "text": "Same spec as uart_tx, so I start from the plan that fully verified that design (frame model, patterns, back-to-back, mid-frame reset).",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v1.json",
+            "note": "Plan from the uart_tx spec, unchanged apart from the DUT name."
+          }
+        }
+      ]
+    },
+    {
+      "text": "FAIL: tx_ready rises one cycle earlier than my model (cycle 42), and the next start bit begins a cycle early. Checking against the spec: 'Each bit lasts exactly CLKS_PER_BIT cycles' and 'tx_ready rises again in the first cycle after the stop bit'. 10 bits x 4 clocks = 40 busy cycles, which is what the model expects; the DUT gives 39. The start and data bits line up, so the short bit is the stop bit. My model follows the spec, so this is a DUT bug and I am not changing the model.",
+      "tool_calls": [
+        {
+          "name": "report_dut_bug",
+          "input": {
+            "title": "Stop bit is one clock short (CLKS_PER_BIT-1 cycles); tx_ready rises a cycle early",
+            "spec_clause": "Each bit lasts exactly CLKS_PER_BIT cycles ... tx_ready rises again in the first cycle after the stop bit.",
+            "evidence": "First mismatch at cycle 42: tx_ready=1, expected 0 (frame accepted 40 cycles earlier; start and data bits match, the stop bit lasts 3 clocks instead of 4). On back-to-back frames the next start bit begins one cycle early (txd=0, expected 1 at cycle 43)."
+          }
+        }
+      ]
+    },
+    {
+      "text": "Reported. The testbench stays as it is: it is the regression test for the fix.",
+      "tool_calls": [
+        {
+          "name": "finish",
+          "input": {
+            "summary": "Found a DUT bug: the stop bit is CLKS_PER_BIT-1 clocks. The reference model was kept faithful to the spec; it fails on this DUT and passes on the correct uart_tx."
+          }
+        }
+      ]
+    }
+  ]
+}

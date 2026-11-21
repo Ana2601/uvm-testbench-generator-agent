@@ -1,0 +1,66 @@
+{
+  "dut": "sync_fifo",
+  "params": {
+    "W": 8,
+    "DEPTH": 8
+  },
+  "clock": "clk",
+  "period_ns": 10,
+  "reset": {
+    "port": "rst_n",
+    "active": 0,
+    "cycles": 3
+  },
+  "defaults": {
+    "wr_valid": "1'b0",
+    "wr_data": "8'h00",
+    "rd_ready": "1'b0"
+  },
+  "model": {
+    "decls": "logic [7:0] m_q [8];\nint m_head;\nint m_count;\nbit m_push, m_pop;",
+    "reset": "m_head = 0;\nm_count = 0;",
+    "outputs": "exp_wr_ready = (m_count != 8);\nexp_rd_valid = (m_count != 0);\nexp_rd_data  = m_q[m_head];\nchk_rd_data  = (m_count != 0);\nexp_count    = 4'(m_count);",
+    "step": "// decide both handshakes on the state BEFORE the edge: a full FIFO refuses\n// a write even when a read happens in the same cycle (spec: no bypass)\nm_push = wr_valid && (m_count != 8);\nm_pop  = rd_ready && (m_count != 0);\nif (m_push) m_q[(m_head + m_count) % 8] = wr_data;\nif (m_pop)  m_head = (m_head + 1) % 8;\nm_count = m_count + int'(m_push) - int'(m_pop);"
+  },
+  "sequences": [
+    {
+      "name": "random_traffic",
+      "cycles": 3000,
+      "drive": {
+        "wr_valid": "1'($urandom_range(0, 1))",
+        "wr_data": "8'($urandom)",
+        "rd_ready": "1'($urandom_range(0, 1))"
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "name": "empty",
+      "expr": "count == 0"
+    },
+    {
+      "name": "full",
+      "expr": "count == 8"
+    },
+    {
+      "name": "write_when_full",
+      "expr": "count == 8 && wr_valid"
+    },
+    {
+      "name": "read_when_empty",
+      "expr": "count == 0 && rd_ready"
+    },
+    {
+      "name": "simul_rw_at_1",
+      "expr": "count == 1 && wr_valid && rd_ready"
+    },
+    {
+      "name": "simul_rw_at_7",
+      "expr": "count == 7 && wr_valid && rd_ready"
+    },
+    {
+      "name": "simul_rw_when_full",
+      "expr": "count == 8 && wr_valid && rd_ready"
+    }
+  ]
+}

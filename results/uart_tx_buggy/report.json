@@ -1,0 +1,44 @@
+{
+  "design": "uart_tx_buggy",
+  "runs": [
+    {
+      "run": 1,
+      "note": "Plan from the uart_tx spec, unchanged apart from the DUT name.",
+      "status": "FAIL",
+      "checks": 4628,
+      "errors": 2572,
+      "coverage_pct": 100.0,
+      "mutation_pct": null,
+      "seconds": 0.1
+    }
+  ],
+  "bugs": [
+    {
+      "title": "Stop bit is one clock short (CLKS_PER_BIT-1 cycles); tx_ready rises a cycle early",
+      "spec_clause": "Each bit lasts exactly CLKS_PER_BIT cycles ... tx_ready rises again in the first cycle after the stop bit.",
+      "evidence": "First mismatch at cycle 42: tx_ready=1, expected 0 (frame accepted 40 cycles earlier; start and data bits match, the stop bit lasts 3 clocks instead of 4). On back-to-back frames the next start bit begins one cycle early (txd=0, expected 1 at cycle 43)."
+    }
+  ],
+  "summary": "Found a DUT bug: the stop bit is CLKS_PER_BIT-1 clocks. The reference model was kept faithful to the spec; it fails on this DUT and passes on the correct uart_tx.",
+  "final": {
+    "run": 1,
+    "status": "FAIL",
+    "checks": 4628,
+    "coverage_pct": 100.0,
+    "holes": [],
+    "mutation": null,
+    "uvm": {
+      "status": "FAIL",
+      "checks": 4632,
+      "errors": 2382,
+      "coverage_pct": 100.0,
+      "uvm_report": {
+        "UVM_INFO": 3,
+        "UVM_WARNING": 2,
+        "UVM_ERROR": 12,
+        "UVM_FATAL": 0
+      },
+      "log": null
+    }
+  }
+}

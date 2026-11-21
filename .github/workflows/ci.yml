@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        id: py
+        with:
+          python-version: '3.11'
+      - name: OSS CAD Suite (Icarus, Verilator, Yosys, SymbiYosys)
+        uses: YosysHQ/setup-oss-cad-suite@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Unit tests
+        run: make test PY=${{ steps.py.outputs.python-path }}
+      - name: Replay trajectories, build and run every UVM testbench on Verilator
+        run: make demo-uvm PY=${{ steps.py.outputs.python-path }}
+      - name: Headline results still hold
+        run: make check PY=${{ steps.py.outputs.python-path }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: generated-testbenches
+          path: |
+            results/summary.md
+            results/*/report.json
+            results/*/plan.json
+            results/*/tb_icarus.sv
+            results/*/uvm/

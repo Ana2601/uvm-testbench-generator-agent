@@ -1,0 +1,189 @@
+<svg class="rich-terminal" viewBox="0 0 1848 855.1999999999999" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2827652909-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2827652909-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2827652909-r1 { fill: #9ece6a;font-weight: bold }
+.terminal-2827652909-r2 { fill: #c5c8c6 }
+.terminal-2827652909-r3 { fill: #f7768e;font-weight: bold }
+.terminal-2827652909-r4 { fill: #7dcfff }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2827652909-clip-terminal">
+      <rect x="0" y="0" width="1829.0" height="804.1999999999999" />
+    </clipPath>
+    <clipPath id="terminal-2827652909-line-0">
+    <rect x="0" y="1.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-1">
+    <rect x="0" y="25.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-2">
+    <rect x="0" y="50.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-3">
+    <rect x="0" y="74.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-4">
+    <rect x="0" y="99.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-5">
+    <rect x="0" y="123.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-6">
+    <rect x="0" y="147.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-7">
+    <rect x="0" y="172.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-8">
+    <rect x="0" y="196.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-9">
+    <rect x="0" y="221.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-10">
+    <rect x="0" y="245.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-11">
+    <rect x="0" y="269.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-12">
+    <rect x="0" y="294.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-13">
+    <rect x="0" y="318.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-14">
+    <rect x="0" y="343.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-15">
+    <rect x="0" y="367.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-16">
+    <rect x="0" y="391.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-17">
+    <rect x="0" y="416.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-18">
+    <rect x="0" y="440.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-19">
+    <rect x="0" y="465.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-20">
+    <rect x="0" y="489.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-21">
+    <rect x="0" y="513.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-22">
+    <rect x="0" y="538.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-23">
+    <rect x="0" y="562.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-24">
+    <rect x="0" y="587.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-25">
+    <rect x="0" y="611.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-26">
+    <rect x="0" y="635.9" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-27">
+    <rect x="0" y="660.3" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-28">
+    <rect x="0" y="684.7" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-29">
+    <rect x="0" y="709.1" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-30">
+    <rect x="0" y="733.5" width="1830" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2827652909-line-31">
+    <rect x="0" y="757.9" width="1830" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1846" height="853.2" rx="8"/><text class="terminal-2827652909-title" fill="#c5c8c6" text-anchor="middle" x="923" y="27">generated&#160;UVM&#160;testbenches&#160;running&#160;on&#160;Verilator&#160;5&#160;+&#160;Accellera&#160;uvm-core</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2827652909-clip-terminal)">
+    
+    <g class="terminal-2827652909-matrix">
+    <text class="terminal-2827652909-r1" x="0" y="20" textLength="597.8" clip-path="url(#terminal-2827652909-line-0)">$&#160;./obj_uvm/simv&#160;&#160;&#160;#&#160;apb_regs,&#160;then&#160;uart_tx_buggy</text><text class="terminal-2827652909-r2" x="1830" y="20" textLength="12.2" clip-path="url(#terminal-2827652909-line-0)">
+</text><text class="terminal-2827652909-r2" x="0" y="44.4" textLength="732" clip-path="url(#terminal-2827652909-line-1)">UVM_INFO&#160;@&#160;0:&#160;reporter&#160;[RNTST]&#160;Running&#160;test&#160;apb_regs_test...</text><text class="terminal-2827652909-r2" x="1830" y="44.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-1)">
+</text><text class="terminal-2827652909-r2" x="0" y="68.8" textLength="244" clip-path="url(#terminal-2827652909-line-2)">COVER&#160;write_ctrl&#160;300</text><text class="terminal-2827652909-r2" x="1830" y="68.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-2)">
+</text><text class="terminal-2827652909-r2" x="0" y="93.2" textLength="244" clip-path="url(#terminal-2827652909-line-3)">COVER&#160;write_data&#160;309</text><text class="terminal-2827652909-r2" x="1830" y="93.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-3)">
+</text><text class="terminal-2827652909-r2" x="0" y="117.6" textLength="317.2" clip-path="url(#terminal-2827652909-line-4)">COVER&#160;write_stat_clear&#160;146</text><text class="terminal-2827652909-r2" x="1830" y="117.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-4)">
+</text><text class="terminal-2827652909-r2" x="0" y="142" textLength="231.8" clip-path="url(#terminal-2827652909-line-5)">COVER&#160;read_ctrl&#160;299</text><text class="terminal-2827652909-r2" x="1830" y="142" textLength="12.2" clip-path="url(#terminal-2827652909-line-5)">
+</text><text class="terminal-2827652909-r2" x="0" y="166.4" textLength="231.8" clip-path="url(#terminal-2827652909-line-6)">COVER&#160;read_data&#160;336</text><text class="terminal-2827652909-r2" x="1830" y="166.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-6)">
+</text><text class="terminal-2827652909-r2" x="0" y="190.8" textLength="231.8" clip-path="url(#terminal-2827652909-line-7)">COVER&#160;read_wcnt&#160;252</text><text class="terminal-2827652909-r2" x="1830" y="190.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-7)">
+</text><text class="terminal-2827652909-r2" x="0" y="215.2" textLength="280.6" clip-path="url(#terminal-2827652909-line-8)">COVER&#160;read_stat_set&#160;169</text><text class="terminal-2827652909-r2" x="1830" y="215.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-8)">
+</text><text class="terminal-2827652909-r2" x="0" y="239.6" textLength="317.2" clip-path="url(#terminal-2827652909-line-9)">COVER&#160;error_write_wcnt&#160;312</text><text class="terminal-2827652909-r2" x="1830" y="239.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-9)">
+</text><text class="terminal-2827652909-r2" x="0" y="264" textLength="292.8" clip-path="url(#terminal-2827652909-line-10)">COVER&#160;error_unmapped&#160;734</text><text class="terminal-2827652909-r2" x="1830" y="264" textLength="12.2" clip-path="url(#terminal-2827652909-line-10)">
+</text><text class="terminal-2827652909-r2" x="0" y="288.4" textLength="256.2" clip-path="url(#terminal-2827652909-line-11)">COVER&#160;idle_cycle&#160;1003</text><text class="terminal-2827652909-r2" x="1830" y="288.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-11)">
+</text><text class="terminal-2827652909-r2" x="0" y="312.8" textLength="329.4" clip-path="url(#terminal-2827652909-line-12)">COVER&#160;reset_after_writes&#160;10</text><text class="terminal-2827652909-r2" x="1830" y="312.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-12)">
+</text><text class="terminal-2827652909-r2" x="0" y="337.2" textLength="244" clip-path="url(#terminal-2827652909-line-13)">CHECKS&#160;7404&#160;ERRORS&#160;0</text><text class="terminal-2827652909-r2" x="1830" y="337.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-13)">
+</text><text class="terminal-2827652909-r1" x="0" y="361.6" textLength="48.8" clip-path="url(#terminal-2827652909-line-14)">PASS</text><text class="terminal-2827652909-r2" x="1830" y="361.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-14)">
+</text><text class="terminal-2827652909-r2" x="0" y="386" textLength="183" clip-path="url(#terminal-2827652909-line-15)">UVM_INFO&#160;:&#160;&#160;&#160;&#160;3</text><text class="terminal-2827652909-r2" x="1830" y="386" textLength="12.2" clip-path="url(#terminal-2827652909-line-15)">
+</text><text class="terminal-2827652909-r2" x="0" y="410.4" textLength="219.6" clip-path="url(#terminal-2827652909-line-16)">UVM_WARNING&#160;:&#160;&#160;&#160;&#160;2</text><text class="terminal-2827652909-r2" x="1830" y="410.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-16)">
+</text><text class="terminal-2827652909-r3" x="0" y="434.8" textLength="109.8" clip-path="url(#terminal-2827652909-line-17)">UVM_ERROR</text><text class="terminal-2827652909-r2" x="109.8" y="434.8" textLength="85.4" clip-path="url(#terminal-2827652909-line-17)">&#160;:&#160;&#160;&#160;&#160;0</text><text class="terminal-2827652909-r2" x="1830" y="434.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-17)">
+</text><text class="terminal-2827652909-r2" x="0" y="459.2" textLength="195.2" clip-path="url(#terminal-2827652909-line-18)">UVM_FATAL&#160;:&#160;&#160;&#160;&#160;0</text><text class="terminal-2827652909-r2" x="1830" y="459.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-18)">
+</text><text class="terminal-2827652909-r4" x="0" y="483.6" textLength="85.4" clip-path="url(#terminal-2827652909-line-19)">[RNTST]</text><text class="terminal-2827652909-r2" x="85.4" y="483.6" textLength="73.2" clip-path="url(#terminal-2827652909-line-19)">&#160;&#160;&#160;&#160;&#160;1</text><text class="terminal-2827652909-r2" x="1830" y="483.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-19)">
+</text><text class="terminal-2827652909-r2" x="0" y="508" textLength="646.6" clip-path="url(#terminal-2827652909-line-20)">-&#160;uvm-core/src/base/uvm_root.svh:633:&#160;Verilog&#160;$finish</text><text class="terminal-2827652909-r2" x="1830" y="508" textLength="12.2" clip-path="url(#terminal-2827652909-line-20)">
+</text><text class="terminal-2827652909-r2" x="0" y="532.4" textLength="793" clip-path="url(#terminal-2827652909-line-21)">-&#160;Verilator:&#160;$finish&#160;at&#160;74us;&#160;walltime&#160;1.603&#160;s;&#160;speed&#160;46.184&#160;us/s</text><text class="terminal-2827652909-r2" x="1830" y="532.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-21)">
+</text><text class="terminal-2827652909-r2" x="1830" y="556.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-22)">
+</text><text class="terminal-2827652909-r2" x="0" y="581.2" textLength="463.6" clip-path="url(#terminal-2827652909-line-23)">-----&#160;uart_tx_buggy&#160;(seeded&#160;bug)&#160;-----</text><text class="terminal-2827652909-r2" x="1830" y="581.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-23)">
+</text><text class="terminal-2827652909-r3" x="0" y="605.6" textLength="109.8" clip-path="url(#terminal-2827652909-line-24)">UVM_ERROR</text><text class="terminal-2827652909-r2" x="109.8" y="605.6" textLength="817.4" clip-path="url(#terminal-2827652909-line-24)">&#160;uart_tx_buggy_tb_pkg.sv(207)&#160;@&#160;451000:&#160;uvm_test_top.env.scb&#160;[SCB]&#160;</text><text class="terminal-2827652909-r3" x="927.2" y="605.6" textLength="97.6" clip-path="url(#terminal-2827652909-line-24)">MISMATCH</text><text class="terminal-2827652909-r2" x="1024.8" y="605.6" textLength="695.4" clip-path="url(#terminal-2827652909-line-24)">&#160;cycle=45&#160;port=tx_ready&#160;got=1&#160;exp=0&#160;|&#160;rst_n=1&#160;tx_valid=0&#160;</text><text class="terminal-2827652909-r2" x="1830" y="605.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-24)">
+</text><text class="terminal-2827652909-r2" x="0" y="630" textLength="329.4" clip-path="url(#terminal-2827652909-line-25)">tx_data=f3&#160;tx_ready=1&#160;txd=1</text><text class="terminal-2827652909-r2" x="1830" y="630" textLength="12.2" clip-path="url(#terminal-2827652909-line-25)">
+</text><text class="terminal-2827652909-r3" x="0" y="654.4" textLength="109.8" clip-path="url(#terminal-2827652909-line-26)">UVM_ERROR</text><text class="terminal-2827652909-r2" x="109.8" y="654.4" textLength="817.4" clip-path="url(#terminal-2827652909-line-26)">&#160;uart_tx_buggy_tb_pkg.sv(207)&#160;@&#160;861000:&#160;uvm_test_top.env.scb&#160;[SCB]&#160;</text><text class="terminal-2827652909-r3" x="927.2" y="654.4" textLength="97.6" clip-path="url(#terminal-2827652909-line-26)">MISMATCH</text><text class="terminal-2827652909-r2" x="1024.8" y="654.4" textLength="695.4" clip-path="url(#terminal-2827652909-line-26)">&#160;cycle=86&#160;port=tx_ready&#160;got=1&#160;exp=0&#160;|&#160;rst_n=1&#160;tx_valid=0&#160;</text><text class="terminal-2827652909-r2" x="1830" y="654.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-26)">
+</text><text class="terminal-2827652909-r2" x="0" y="678.8" textLength="329.4" clip-path="url(#terminal-2827652909-line-27)">tx_data=34&#160;tx_ready=1&#160;txd=1</text><text class="terminal-2827652909-r2" x="1830" y="678.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-27)">
+</text><text class="terminal-2827652909-r3" x="0" y="703.2" textLength="109.8" clip-path="url(#terminal-2827652909-line-28)">UVM_ERROR</text><text class="terminal-2827652909-r2" x="109.8" y="703.2" textLength="829.6" clip-path="url(#terminal-2827652909-line-28)">&#160;uart_tx_buggy_tb_pkg.sv(207)&#160;@&#160;1271000:&#160;uvm_test_top.env.scb&#160;[SCB]&#160;</text><text class="terminal-2827652909-r3" x="939.4" y="703.2" textLength="97.6" clip-path="url(#terminal-2827652909-line-28)">MISMATCH</text><text class="terminal-2827652909-r2" x="1037" y="703.2" textLength="707.6" clip-path="url(#terminal-2827652909-line-28)">&#160;cycle=127&#160;port=tx_ready&#160;got=1&#160;exp=0&#160;|&#160;rst_n=1&#160;tx_valid=0&#160;</text><text class="terminal-2827652909-r2" x="1830" y="703.2" textLength="12.2" clip-path="url(#terminal-2827652909-line-28)">
+</text><text class="terminal-2827652909-r2" x="0" y="727.6" textLength="329.4" clip-path="url(#terminal-2827652909-line-29)">tx_data=69&#160;tx_ready=1&#160;txd=1</text><text class="terminal-2827652909-r2" x="1830" y="727.6" textLength="12.2" clip-path="url(#terminal-2827652909-line-29)">
+</text><text class="terminal-2827652909-r2" x="0" y="752" textLength="280.6" clip-path="url(#terminal-2827652909-line-30)">CHECKS&#160;4632&#160;ERRORS&#160;2382</text><text class="terminal-2827652909-r2" x="1830" y="752" textLength="12.2" clip-path="url(#terminal-2827652909-line-30)">
+</text><text class="terminal-2827652909-r3" x="0" y="776.4" textLength="48.8" clip-path="url(#terminal-2827652909-line-31)">FAIL</text><text class="terminal-2827652909-r2" x="1830" y="776.4" textLength="12.2" clip-path="url(#terminal-2827652909-line-31)">
+</text><text class="terminal-2827652909-r3" x="0" y="800.8" textLength="109.8" clip-path="url(#terminal-2827652909-line-32)">UVM_ERROR</text><text class="terminal-2827652909-r2" x="109.8" y="800.8" textLength="85.4" clip-path="url(#terminal-2827652909-line-32)">&#160;:&#160;&#160;&#160;12</text><text class="terminal-2827652909-r2" x="1830" y="800.8" textLength="12.2" clip-path="url(#terminal-2827652909-line-32)">
+</text>
+    </g>
+    </g>
+</svg>

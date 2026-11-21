@@ -1,0 +1,41 @@
+{
+  "model": "claude (interactive, during development)",
+  "note": "Model outputs (plans, bug reports) only. Every simulation, coverage figure and mutation score is recomputed on replay.",
+  "steps": [
+    {
+      "text": "8N1 UART with 4 clocks per bit. Model: busy flag, cycle counter since the frame started, latched byte. txd is a function of counter/C (0 = start, 1..8 = data LSB first, 9 = stop). Frame complete after 10*C busy cycles, ready again in the next cycle. Random requests first.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v1.json",
+            "note": "Cycle-counting frame model; random requests."
+          }
+        }
+      ]
+    },
+    {
+      "text": "PASS, but coverage is 37.5 %: the data patterns 0x00/0xFF/0x55/0xAA and reset in the middle of a frame were never hit. The one surviving mutant changes txd's reset value; it is only visible if outputs are checked DURING a reset, which needs a reset in the middle of traffic. Adding back-to-back frames with fixed patterns (tx_valid held high) and a sequence with mid-frame resets.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v2.json",
+            "note": "Directed: 4 data patterns back-to-back with tx_valid held high; mid-frame resets."
+          }
+        }
+      ]
+    },
+    {
+      "text": "100 % coverage, all 20 killable mutants killed (3 proven equivalent). Done.",
+      "tool_calls": [
+        {
+          "name": "finish",
+          "input": {
+            "summary": "Frame-level reference model checks txd and tx_ready every cycle, including during reset. Random plus directed stimulus: patterns 0x00/0xFF/0x55/0xAA, back-to-back frames, requests while busy, and resets mid-frame. The mid-frame reset sequence was needed to catch a wrong txd reset value."
+          }
+        }
+      ]
+    }
+  ]
+}

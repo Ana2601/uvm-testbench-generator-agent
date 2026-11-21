@@ -1,0 +1,56 @@
+{
+  "design": "apb_regs",
+  "runs": [
+    {
+      "run": 1,
+      "note": "Register model with RO/W1C semantics; random transfers to the mapped addresses.",
+      "status": "PASS",
+      "checks": 4000,
+      "errors": 0,
+      "coverage_pct": 72.7,
+      "mutation_pct": 93.3,
+      "seconds": 3.5
+    },
+    {
+      "run": 2,
+      "note": "All 16 addresses with idle cycles; write / reset / read-back-all sequence.",
+      "status": "PASS",
+      "checks": 7400,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "mutation_pct": 100.0,
+      "seconds": 2.3
+    }
+  ],
+  "bugs": [],
+  "summary": "Checks prdata (where defined), pslverr and pready every cycle against a register model with RW, RO and W1C semantics. Covers every register read and write, both error kinds, idle cycles and reset-after-traffic. The read-back-after-reset sequence was what caught wrong reset values.",
+  "final": {
+    "run": 2,
+    "status": "PASS",
+    "checks": 7400,
+    "coverage_pct": 100.0,
+    "holes": [],
+    "mutation": {
+      "mutants": 31,
+      "killed": 30,
+      "survived": 0,
+      "equivalent": 1,
+      "stillborn": 0,
+      "score_pct": 100.0,
+      "survivors": []
+    },
+    "uvm": {
+      "status": "PASS",
+      "checks": 7404,
+      "errors": 0,
+      "coverage_pct": 100.0,
+      "uvm_report": {
+        "UVM_INFO": 3,
+        "UVM_WARNING": 2,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "log": null
+    }
+  }
+}

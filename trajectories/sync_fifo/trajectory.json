@@ -1,0 +1,41 @@
+{
+  "model": "claude (interactive, during development)",
+  "note": "Model outputs (plans, bug reports) only. Every simulation, coverage figure and mutation score is recomputed on replay.",
+  "steps": [
+    {
+      "text": "FIFO with first-word fall-through. Model: circular buffer m_q, head pointer and count; wr_ready = !full, rd_valid = !empty, rd_data is don't-care while empty. Random traffic on both sides plus coverage at the full/empty boundaries.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v1.json",
+            "note": "First plan: circular-buffer model, random traffic, boundary coverage."
+          }
+        }
+      ]
+    },
+    {
+      "text": "Mismatch at cycle 77: the DUT shows count 7 and wr_ready 1, my model 8 and 0. The previous cycle had count 8 with wr_valid and rd_ready both high. The spec says a full FIFO refuses a write even when a read happens in the same cycle (no bypass), so the DUT kept 7 and the bug is in MY model: it popped first, then tested 'not full' on the updated count. Fix: decide push and pop on the pre-edge state.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v2.json",
+            "note": "Model fix: push/pop decided on the state before the edge (spec: no bypass when full)."
+          }
+        }
+      ]
+    },
+    {
+      "text": "PASS with 3000 checks, 100 % coverage, and every mutant killed. Done.",
+      "tool_calls": [
+        {
+          "name": "finish",
+          "input": {
+            "summary": "Reference model of a FWFT FIFO (spec-level: circular buffer, count, no-bypass rule), random back-pressure on both sides, 7 boundary coverage points (including simultaneous read/write at 1, 7 and full). The first plan's model was wrong (it allowed a bypass write); the spec decided it, and the DUT was right."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude (interactive, during development)",
+  "note": "Model outputs (plans, bug reports) only. Every simulation, coverage figure and mutation score is recomputed on replay.",
+  "steps": [
+    {
+      "text": "APB3 register block. Model: CTRL/DATA/WCNT/STAT state; pslverr for unmapped addresses or a WCNT write in the access phase; prdata checked only in the access phase of a successful read (the spec leaves it undefined otherwise). Stimulus: back-to-back setup/access pairs to the four mapped registers.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v1.json",
+            "note": "Register model with RO/W1C semantics; random transfers to the mapped addresses."
+          }
+        }
+      ]
+    },
+    {
+      "text": "PASS, coverage 72.7 %: no unmapped addresses, no idle cycles, no reset after traffic. Two mutants survive: wrong reset values of CTRL and STAT, because the random stream happened to write them before reading them. Adding transfers over all 16 addresses with idle cycles between them, and a sequence that writes, resets, then reads every register back.",
+      "tool_calls": [
+        {
+          "name": "run_plan",
+          "input": {
+            "plan_file": "plan_v2.json",
+            "note": "All 16 addresses with idle cycles; write / reset / read-back-all sequence."
+          }
+        }
+      ]
+    },
+    {
+      "text": "100 % coverage, 30/30 killable mutants killed. Done.",
+      "tool_calls": [
+        {
+          "name": "finish",
+          "input": {
+            "summary": "Checks prdata (where defined), pslverr and pready every cycle against a register model with RW, RO and W1C semantics. Covers every register read and write, both error kinds, idle cycles and reset-after-traffic. The read-back-after-reset sequence was what caught wrong reset values."
+          }
+        }
+      ]
+    }
+  ]
+}

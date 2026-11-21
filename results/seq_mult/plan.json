@@ -1,0 +1,90 @@
+{
+  "dut": "seq_mult",
+  "params": {
+    "W": 16
+  },
+  "clock": "clk",
+  "period_ns": 10,
+  "reset": {
+    "port": "rst_n",
+    "active": 0,
+    "cycles": 3
+  },
+  "defaults": {
+    "start": "1'b0",
+    "a": "16'h0",
+    "b": "16'h0"
+  },
+  "model": {
+    "decls": "localparam int W = 16;\nbit m_busy, m_done;\nint m_left;\nlogic [15:0] m_a, m_b;\nlogic [31:0] m_p;\nbit m_busy_at_reset;",
+    "reset": "m_busy_at_reset = m_busy;\nm_busy = 0;\nm_done = 0;\nm_left = 0;\nm_a = 16'h0;\nm_b = 16'h0;\nm_p = 32'h0;",
+    "outputs": "exp_busy = m_busy;\nexp_done = m_done;\nexp_p    = m_p;",
+    "step": "m_done = 0;\nif (!m_busy) begin\n    if (start) begin\n        m_busy = 1;\n        m_left = W;\n        m_a = a;\n        m_b = b;\n    end\nend else begin\n    m_left = m_left - 1;\n    if (m_left == 0) begin\n        m_busy = 0;\n        m_done = 1;\n        m_p = 32'(m_a) * 32'(m_b);\n    end\nend"
+  },
+  "sequences": [
+    {
+      "name": "random_products",
+      "cycles": 6000,
+      "drive": {
+        "start": "1'($urandom_range(0, 7) == 0)",
+        "a": "16'($urandom)",
+        "b": "16'($urandom)"
+      }
+    },
+    {
+      "name": "corner_operands_start_held",
+      "cycles": 408,
+      "pre": "case ((i / 17) % 6)\n    0: begin s_a = 16'h0000; s_b = 16'($urandom); end\n    1: begin s_a = 16'($urandom); s_b = 16'h0000; end\n    2: begin s_a = 16'hFFFF; s_b = 16'hFFFF; end\n    3: begin s_a = 16'h0001; s_b = 16'($urandom); end\n    4: begin s_a = 16'h1 << ((i / 102) % 16); s_b = 16'hFFFF; end\n    default: begin s_a = 16'($urandom); s_b = 16'h1 << ((i / 17) % 16); end\nendcase",
+      "drive": {
+        "start": "1'b1",
+        "a": "s_a",
+        "b": "s_b"
+      }
+    },
+    {
+      "name": "reset_while_busy",
+      "cycles": 200,
+      "drive": {
+        "start": "1'($urandom_range(0, 1))",
+        "a": "16'($urandom)",
+        "b": "16'($urandom)"
+      },
+      "reset_when": "(i % 50) == 9"
+    }
+  ],
+  "coverage": [
+    {
+      "name": "start_accepted",
+      "expr": "start && !busy"
+    },
+    {
+      "name": "start_while_busy",
+      "expr": "start && busy"
+    },
+    {
+      "name": "back_to_back",
+      "expr": "start && done"
+    },
+    {
+      "name": "a_zero",
+      "expr": "start && !busy && a == 16'h0"
+    },
+    {
+      "name": "b_zero",
+      "expr": "start && !busy && b == 16'h0"
+    },
+    {
+      "name": "both_max",
+      "expr": "start && !busy && a == 16'hFFFF && b == 16'hFFFF"
+    },
+    {
+      "name": "a_power_of_two",
+      "expr": "start && !busy && a != 16'h0 && (a & (a - 16'h1)) == 16'h0"
+    },
+    {
+      "name": "reset_while_busy",
+      "expr": "!rst_n && m_busy_at_reset"
+    }
+  ],
+  "seq_vars": "logic [15:0] s_a, s_b;"
+}
